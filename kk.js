@@ -7,3 +7,4 @@ http.createServer(function (request, response) {
 }).listen(5656);
 
 console.log('finish');
+console.log('finish2');
