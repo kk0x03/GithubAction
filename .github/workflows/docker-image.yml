@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag kknode:$(date +%s)
     - name: Publish to docker repository
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v4
       with:
           name: kkmm/kknode:$(date +%s)
           repository: kkmm/kknode
