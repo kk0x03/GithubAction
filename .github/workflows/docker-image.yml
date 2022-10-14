@@ -15,11 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag kknode:$(date +%s)
+      run: docker build . --file Dockerfile --tag kknode:${{ github.ref_name	 }}
     - name: Publish to docker repository
       uses: elgohr/Publish-Docker-Github-Action@v4
       with:
-          name: kkmm/kknode:$(date +%s)
+          name: kkmm/kknode:${{ github.ref_name	 }}
           repository: kkmm/kknode
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
