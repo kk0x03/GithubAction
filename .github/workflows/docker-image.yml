@@ -36,6 +36,5 @@ jobs:
         username: ubuntu
         password: Km106822,
         script: |
-          sudo su
-          docker pull kkaoeu/kktest:${{ github.ref_name	 }}
-          docker run -d -p 5656:5656 --name kktt kkaoeu/kktest:${{ github.ref_name	 }}
+          sudo docker pull kkaoeu/kktest:${{ github.ref_name	 }}
+          sudo docker run -d -p 5656:5656 --name kktt kkaoeu/kktest:${{ github.ref_name	 }}
