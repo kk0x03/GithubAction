@@ -32,9 +32,9 @@ jobs:
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.5
       with: 
-        host: 42.192.155.212
-        username: ubuntu
-        password: Km106822,
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        password: ${{ secrets.SERVER_PASSWORD }}
         script: |
           sudo docker pull kkaoeu/kktest:${{ github.ref_name	 }}
           sudo docker run -d -p 5656:5656 --name kktt kkaoeu/kktest:${{ github.ref_name	 }}
