@@ -38,3 +38,13 @@ jobs:
         script: |
           sudo docker pull kkaoeu/kktest:${{ github.ref_name	 }}
           sudo docker run -d -p 5656:5656 --name kktt kkaoeu/kktest:${{ github.ref_name	 }}
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
+    - name: Set Action Secret
+      uses: hmanzur/actions-set-secret@v2.0.0
+      with: 
+        name: front_version
+        value: ${{ steps.date.outputs.today }} 
+        repository: kk0x03/GithubAction
+        token: ${{ secrets.THE_TOKEN }}
