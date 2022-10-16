@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag kktest:${{ steps.date.outputs.today }} 
+      run: docker build . --file Dockerfile --tag kktest:${{ secrets.FRONT_VERSION }} 
     - name: Login to Docker Hub
       uses: docker/login-action@v1
       with:
@@ -36,8 +36,8 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
-          sudo docker pull kkaoeu/kktest:${{ steps.date.outputs.today }} 
-          sudo docker run -d -p 5656:5656 --name kktt kkaoeu/kktest:${{ steps.date.outputs.today }} 
+          sudo docker pull kkaoeu/kktest:${{ secrets.FRONT_VERSION }} 
+          sudo docker run -d -p 5656:5656 --name kktt kkaoeu/kktest:${{ secrets.FRONT_VERSION }} 
     - name: Get current date
       id: date
       run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
