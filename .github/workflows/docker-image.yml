@@ -36,6 +36,8 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
+          sudo docker stop kktt
+          sudo docker rm kktt
           sudo docker pull kkaoeu/kktest:${{ secrets.FRONT_VERSION }} 
           sudo docker run -d -p 5656:5656 --name kktt kkaoeu/kktest:${{ secrets.FRONT_VERSION }} 
     - name: Get current date
