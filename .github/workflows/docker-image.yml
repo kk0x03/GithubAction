@@ -24,7 +24,7 @@ jobs:
     - name: Publish to docker repository
       uses: elgohr/Publish-Docker-Github-Action@v4
       with:
-          name: kkaoeu/kktest:${{ steps.date.outputs.today }} 
+          name: kkaoeu/kktest:${{ secrets.FRONT_VERSION }} 
           repository: kkaoeu/kktest
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
